@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git://github.com/iloire/watchmen-plugin-Pushover.git"
   },
-  "author": "Maik Hummel",
+  "author": "Maik Hummel <m@ikhummel.com>",
   "license": "MIT",
   "dependencies": {
     "moment": "^2.18.1",
