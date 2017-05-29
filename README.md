@@ -1,4 +1,4 @@
-# Pushover plugin for [WatchMen](https://github.com/iloire/WatchMen)
+# [Pushover](https://pushover.net/) plugin for [WatchMen](https://github.com/iloire/WatchMen)
 
 > Notifies you about outages over Pushover. Outage notifications are by default high priority (`2`) and have to be acknowledged by the recipient.
 
