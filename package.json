@@ -1,5 +1,5 @@
 {
-  "name": "watchmen-plugin-Pushover",
+  "name": "watchmen-plugin-pushover",
   "version": "0.1.0",
   "description": "Pushover plugin for WatchMen",
   "main": "index.js",

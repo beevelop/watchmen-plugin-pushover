@@ -18,6 +18,11 @@ const sendPushNotification = (service, title, message, priority) => {
       url_title: service.name
   }
 
+  if (priority === 2) {
+    payload.retry = 30
+    payload.expire = 3600
+  }
+
   push.send(payload, (err, result) => {
     if (err) winston.error(err)
     console.info(result)
