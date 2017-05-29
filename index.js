@@ -6,10 +6,12 @@ const winston = require('winston')
 winston.remove(winston.transports.Console)
 winston.add(winston.transports.Console, { 'timestamp': true, 'colorize': true })
 
-const push = new Pushover({
+const pushoverConfig = {
   user: process.env['WATCHMEN_PUSHOVER_USER'],
   token: process.env['WATCHMEN_PUSHOVER_TOKEN']
-})
+}
+
+const push = new Pushover(pushoverConfig)
 
 const sendPushNotification = (service, title, message, priority) => {
   let payload = {
@@ -30,6 +32,12 @@ const sendPushNotification = (service, title, message, priority) => {
 }
 
 exports = module.exports = (watchmen) => {
+  if (!pushoverConfig.user || !pushoverConfig.token) {
+    winston.warn('[Pushover] You have to provide WATCHMEN_PUSHOVER_USER and WATCHMEN_PUSHOVER_USER as environment variables!')
+    winston.warn('[Pushover] Is not enabled...')
+    return
+  }
+
   watchmen.on('new-outage', (service, outage) => {
     sendPushNotification(service, `${service.name} down!`, JSON.stringify(outage.error), 2)
   })
