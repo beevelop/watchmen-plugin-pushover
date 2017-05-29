@@ -25,7 +25,7 @@ const sendPushNotification = (service, title, message, priority) => {
 
   push.send(payload, (err, result) => {
     if (err) winston.error(err)
-    console.info(result)
+    winston.info('[Pushover]', result)
   })
 }
 
@@ -36,6 +36,6 @@ exports = module.exports = (watchmen) => {
   
   watchmen.on('service-back', (service, lastOutage) => {
     let duration = moment.duration(moment().diff(lastOutage.timestamp))
-    sendPushNotification(service, `${service.name} is back`, `Down for ${duration.humanize()}`, 0)
+    sendPushNotification(service, `${service.name} is back`, `${service.name} was down for ${duration.humanize()}`, 0)
   })
 }
